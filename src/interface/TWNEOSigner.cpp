@@ -24,7 +24,7 @@ TW_NEO_Proto_SigningOutput TWNEOSignerSign(TW_NEO_Proto_SigningInput data) {
 
     unordered_map<std::string, unique_ptr<TxBuilder>> contractTxBuilder;
     contractTxBuilder.emplace("NEO", std::unique_ptr<TxBuilder>(new NeoTxBuilder()));
-//    contractTxBuilder.emplace("GAS", std::unique_ptr<TxBuilder>(new GasTxBuilder()));
+    contractTxBuilder.emplace("GAS", std::unique_ptr<TxBuilder>(new GasTxBuilder()));
 
     if (contractTxBuilder.find(contract) != contractTxBuilder.end()) {
         auto encoded = contractTxBuilder[contract]->build(input);

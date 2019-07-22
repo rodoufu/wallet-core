@@ -11,26 +11,22 @@ using namespace TW::NEO;
 using namespace TW::NEO::Token;
 
 Data NeoTxBuilder::decimals(const NEO::Proto::SigningInput &input) {
-    auto transaction = createAsset()->decimals(input.nonce());
-    auto encoded = transaction.serialize();
-    return encoded;
+    return createAsset()->decimals(input.nonce()).serialize();
 }
 
 Data NeoTxBuilder::balanceOf(const NEO::Proto::SigningInput &input) {
     auto queryAddress = Address(input.query_address());
     auto transaction = createAsset()->balanceOf(queryAddress, input.nonce());
-    auto encoded = transaction.serialize();
-    return encoded;
+    return transaction.serialize();
 }
 
 Data NeoTxBuilder::transfer(const NEO::Proto::SigningInput &input) {
     auto payerSigner = Signer(PrivateKey(input.payer_private_key()));
     auto fromSigner = Signer(PrivateKey(input.owner_private_key()));
     auto toAddress = Address(input.to_address());
-    auto tranferTx = createAsset()->transfer(fromSigner, toAddress, input.amount(), payerSigner,
+    auto transferTx = createAsset()->transfer(fromSigner, toAddress, input.amount(), payerSigner,
                                     input.gas_price(), input.gas_limit(), input.nonce());
-    auto encoded = tranferTx.serialize();
-    return encoded;
+    return transferTx.serialize();
 }
 
 Data NeoTxBuilder::build(const NEO::Proto::SigningInput &input) {

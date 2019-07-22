@@ -16,14 +16,12 @@ Data GasTxBuilder::withdraw(const NEO::Proto::SigningInput &input) {
     auto toAddress = Address(input.to_address());
     auto transaction = Gas().withdraw(owner, toAddress, input.amount(), payer, input.gas_price(),
                                       input.gas_limit(), input.nonce());
-    auto encoded = transaction.serialize();
-    return encoded;
+    return transaction.serialize();
 }
 
 Data GasTxBuilder::build(const NEO::Proto::SigningInput &input) {
-    auto method = std::string(input.method().begin(), input.method().end());
-    if (method == "withdraw") {
-        return GasTxBuilder::withdraw(input);
+    if (std::string(input.method().begin(), input.method().end()) == "withdraw") {
+        return withdraw(input);
     }
     return NeoTxBuilder::build(input);
 }
