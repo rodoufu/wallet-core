@@ -21,7 +21,7 @@ TW::Data TW::readVarBytes(const Data &from, int initial_pos, uint32_t* dataRead)
     if (dataRead) {
         *dataRead = uint32_t(shift + size);
     }
-    return readBytes(from, size, initial_pos + shift);
+    return readBytes(from, int(size), initial_pos + int(shift));
 }
 
 template<> uint64_t TW::readVar(const TW::Data &from, int initial_pos, const uint64_t &max) {
