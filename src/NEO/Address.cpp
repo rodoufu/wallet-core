@@ -9,16 +9,13 @@
 #include "Tezos/BinaryCoding.h"
 #include "../Base58.h"
 #include "../Hash.h"
+#include "../Ontology/ParamsBuilder.h"
 
 using namespace TW::NEO;
 
 bool Address::isValid(const std::string& string) {
     const auto decoded = Base58::bitcoin.decodeCheck(string);
-    if (decoded.size() != Address::size || decoded[0] != version) {
-        return false;
-    }
-
-    return true;
+    return !(decoded.size() != Address::size || decoded[0] != version);
 }
 
 Address::Address(const PublicKey& publicKey) {
@@ -31,8 +28,18 @@ Address::Address(const PublicKey& publicKey) {
     auto keyHash = Hash::ripemd(Hash::sha256(pkdata));
     keyHash.insert(keyHash.begin(), 0x17);
 
-    if (keyHash.size() != Address::size)
+    if (keyHash.size() != Address::size) {
         throw std::invalid_argument("Invalid address key data");
+    }
 
     std::copy(keyHash.data(), keyHash.data() + Address::size, bytes.begin());
+}
+
+Address::Address(uint8_t m, const std::vector<Data>& publicKeys) {
+    auto builderData = toScriptHash(Ontology::ParamsBuilder::fromMultiPubkey(m, publicKeys));
+    std::copy(builderData.begin(), builderData.end(), bytes.begin());
+}
+
+Data Address::toScriptHash(const Data& data) const {
+    return Hash::ripemd(Hash::sha256(data));
 }

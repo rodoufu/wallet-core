@@ -285,6 +285,11 @@ TEST(Coin, ValidateAddressTerra) {
     EXPECT_FALSE(validateAddress(TWCoinTypeAeternity, "cosmos1hkfq3zahaqkkzx5mjnamwjsfpq2jk7z0emlrvp"));
 }
 
+TEST(Coin, ValidateAddressNEO) {
+    EXPECT_TRUE(validateAddress(TWCoinTypeNEO, "AQAsqiyHS4SSVWZ4CmMmnCxWg7vJ84GEj4"));
+    EXPECT_FALSE(validateAddress(TWCoinTypeNEO, "1Ma2DrB78K7jmAwaomqZNRMCvgQrNjE2QC"));
+}
+
 TEST(Coin, ValidateAddressNebulas) {
     EXPECT_TRUE(validateAddress(TWCoinTypeNebulas, "n1V5bB2tbaM3FUiL4eRwpBLgEredS5C2wLY"));
     EXPECT_FALSE(validateAddress(TWCoinTypeNebulas, "a1TgpFZWCMmFd2sphb6RKsCvsEyMCNa2Yyv"));
