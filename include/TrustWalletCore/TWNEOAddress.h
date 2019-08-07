@@ -27,7 +27,7 @@ bool TWNEOAddressEqual(struct TWNEOAddress *_Nonnull lhs, struct TWNEOAddress *_
 TW_EXPORT_STATIC_METHOD
 bool TWNEOAddressIsValidString(TWString *_Nonnull string);
 
-/// Creates an address from a string representaion.
+/// Creates an address from a string representation.
 TW_EXPORT_STATIC_METHOD
 struct TWNEOAddress *_Nullable TWNEOAddressCreateWithString(TWString *_Nonnull string);
 
