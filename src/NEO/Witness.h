@@ -6,8 +6,8 @@
 
 #pragma once
 
-#include "ISerializable.h"
 #include "../Data.h"
+#include "ISerializable.h"
 
 namespace TW::NEO {
 

@@ -6,11 +6,6 @@
 
 #pragma once
 
-#include <vector>
-#include <iterator>
-#include <cstdint>
-#include <climits>
-
 #include "../Data.h"
 #include "../BinaryCoding.h"
 #include "ReadData.h"
@@ -25,7 +20,7 @@ class ISerializable {
     virtual void deserialize(const Data &data, int initial_pos = 0) = 0;
 
     template<class T>
-    static inline Data serialize(const std::vector<T> & data) {
+    static inline Data serialize(const std::vector <T> &data) {
         Data resp;
         encodeVarInt(data.size(), resp);
         for (auto it = data.begin(); it < data.end(); ++it) {
@@ -35,7 +30,7 @@ class ISerializable {
     }
 
     template<class T>
-    static inline Data serialize(const T* data, int size) {
+    static inline Data serialize(const T *data, int size) {
         Data resp;
         encodeVarInt(uint64_t(size), resp);
         for (int i = 0; i < size; ++i) {
@@ -45,7 +40,8 @@ class ISerializable {
     }
 
     template<class T>
-    static inline Data serialize(std::iterator<std::input_iterator_tag, T> begin, std::iterator<std::input_iterator_tag, T> end) {
+    static inline Data
+    serialize(std::iterator <std::input_iterator_tag, T> begin, std::iterator <std::input_iterator_tag, T> end) {
         Data resp;
         encodeVarInt(uint64_t(end - begin), resp);
         for (auto it = begin; it < end; ++it) {
@@ -55,7 +51,7 @@ class ISerializable {
     }
 
     template<class T>
-    static inline int deserialize(std::vector<T> &resp, const Data &data, int initial_pos = 0) {
+    static inline int deserialize(std::vector <T> &resp, const Data &data, int initial_pos = 0) {
         uint64_t size = readVar<uint64_t>(data, initial_pos, INT_MAX);
         if (size < 0) {
             throw std::invalid_argument("ISerializable::deserialize ArgumentOutOfRangeException");
@@ -71,7 +67,7 @@ class ISerializable {
 
         return initial_pos;
     }
-    
+
 };
 
 } // namespace TW::NEO

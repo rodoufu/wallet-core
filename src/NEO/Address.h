@@ -6,11 +6,11 @@
 
 #pragma once
 
+#include <string>
+
 #include "../Base58Address.h"
 #include "../Data.h"
 #include "../PublicKey.h"
-
-#include <string>
 
 namespace TW::NEO {
 

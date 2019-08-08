@@ -4,13 +4,14 @@
 // terms governing use, modification, and redistribution, is contained in the
 // file LICENSE at the root of the source code distribution tree.
 
-#include "Address.h"
-
-#include "Tezos/BinaryCoding.h"
+#include "../Ontology/ParamsBuilder.h"
 #include "../Base58.h"
 #include "../Hash.h"
-#include "../Ontology/ParamsBuilder.h"
+#include "../Data.h"
 
+#include "Address.h"
+
+using namespace TW;
 using namespace TW::NEO;
 
 bool Address::isValid(const std::string& string) {

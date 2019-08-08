@@ -7,10 +7,9 @@
 #pragma once
 
 #include "../uint256.h"
-#include "../UInt.h"
 #include "../Data.h"
-#include "ReadData.h"
 #include "../BinaryCoding.h"
+#include "ReadData.h"
 #include "ISerializable.h"
 
 namespace TW::NEO {

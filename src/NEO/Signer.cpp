@@ -4,11 +4,10 @@
 // terms governing use, modification, and redistribution, is contained in the
 // file LICENSE at the root of the source code distribution tree.
 
-#include "Signer.h"
-#include "../HexCoding.h"
 #include "../Hash.h"
 #include "../PublicKey.h"
 #include "../PrivateKey.h"
+#include "Signer.h"
 
 using namespace TW;
 using namespace TW::NEO;

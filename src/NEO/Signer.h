@@ -6,10 +6,10 @@
 
 #pragma once
 
-#include "Address.h"
-#include "Transaction.h"
 #include "../PrivateKey.h"
 #include "../Data.h"
+#include "Address.h"
+#include "Transaction.h"
 
 namespace TW::NEO {
 

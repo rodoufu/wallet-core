@@ -6,14 +6,11 @@
 
 #pragma once
 
-#include <vector>
-
-#include "ISerializable.h"
 #include "../uint256.h"
 #include "../UInt.h"
 #include "../Data.h"
-#include "ReadData.h"
 #include "../BinaryCoding.h"
+#include "ISerializable.h"
 
 namespace TW::NEO {
 

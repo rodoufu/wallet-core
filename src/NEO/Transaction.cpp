@@ -7,13 +7,11 @@
 #include <ctype.h>
 
 #include "../uint256.h"
-#include "../UInt.h"
 #include "../Data.h"
-#include "../HexCoding.h"
+#include "../Hash.h"
 #include "Transaction.h"
 #include "MinerTransaction.h"
 
-#include <iostream>
 using namespace std;
 
 using namespace TW;

@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include <ctype.h>
+#include <cctype>
 
 #include "../Data.h"
 #include "../BinaryCoding.h"

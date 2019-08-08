@@ -7,7 +7,6 @@
 #pragma once
 
 #include "../uint256.h"
-#include "../PublicKey.h"
 #include "ISerializable.h"
 #include "TransactionType.h"
 #include "TransactionAttribute.h"
