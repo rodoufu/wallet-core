@@ -36,4 +36,18 @@ class NEOAddressTests: XCTestCase {
         let address = NEOAddress(string: "ANDfjwrUroaVtvBguDtrWKRMyxFwvVwnZD")!
         XCTAssertEqual(address.description, "ANDfjwrUroaVtvBguDtrWKRMyxFwvVwnZD")
     }
+
+    func testFromPrivateKey2() {
+        let key = PrivateKey(data: Data(hexString: "4646464646464646464646464646464646464646464646464646464646464646")!)!
+        let pubkey = key.getPublicKeySecp256k1(compressed: true)
+        let address = NEOAddress(publicKey: pubkey)
+        XCTAssertEqual(address.description, "AKyqorS5EiAEz9XpmBGrFCyhNURS82TRQz")
+    }
+
+    func testFromPrivateKey3() {
+        let key = PrivateKey(data: Data(hexString: "9c3d42d0515f0406ed350ab2abf3eaf761f8907802469b64052ac17e2250ae13")!)!
+        let pubkey = key.getPublicKeySecp256k1(compressed: true)
+        let address = NEOAddress(publicKey: pubkey)
+        XCTAssertEqual(address.description, "ARjxtNSEJt9LE4TJUob5yM8UBtopQvuBrK")
+    }
 }
